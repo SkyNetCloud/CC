@@ -15,7 +15,8 @@
         "shell",
         "term",
         "textutils",
-        "window"
+        "window",
+        "sleep"
     ],
     "Lua.diagnostics.severity": {
         "unused-local": "Information",

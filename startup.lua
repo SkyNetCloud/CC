@@ -134,13 +134,17 @@ function test_stuff()
         draw_text_term(27, 6, "success", colors.lime, colors.black)
         sleep(0.5)
     end
+    draw_text_term(2, 7, "saving configuration...", colors.white, colors.black)  
 
     save_config()
+
     sleep(0.1)
     draw_text_term(1, 9, "Setup Complete!", colors.lime, colors.black) 
     sleep(1)
 
-    call_homepage()
+    auto = auto_string == "true"
+    call_homepage() 
+
 end
 
 function findRSBridgeBlock()

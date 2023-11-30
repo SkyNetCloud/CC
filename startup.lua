@@ -10,7 +10,7 @@ local monY
 function clear()
     mon.setBackgroundColor(colors.black)
     mon.clear()
-    mon.setCursor(1, 1)
+    mon.setCursorPos(1, 1)
 end
 
 --display text on computer's terminal screen

@@ -75,8 +75,8 @@ function findMonitorBlock()
 end
 
 function startup()
-    reactor = reactorSearch()
-    mon = monitorSearch()
+    rsBridge = findRSBridgeBlock()
+    mon = findMonitorBlock()
 
     homeScreen()
 end

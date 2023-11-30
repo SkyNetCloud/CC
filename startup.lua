@@ -77,14 +77,14 @@ function homeScreen()
     while true do
         clear()
 
-        energy_stored = rsBridge.getEnergyStored()
+        --energy_stored = rsBridge.getEnergyStorage()
 
 
         -- display_text(2,3, "Power:", colors.yellow, colors.black)
 
         draw_text(2, 5, "Energy Stored:", colors.yellow, colors.black)
         local maxVal = rsBridge.getMaxEnergyStorage()
-        local minVal = rsBridge.getEnergyStored()
+        local minVal = rsBridge.getEnergyStorage()
         local percent = math.floor((minVal / maxVal) * 100)
         draw_text(15, 5, percent .. "%", colors.white, colors.black)
 
@@ -120,6 +120,17 @@ function test_stuff()
     rsBridge = findRSBridgeBlock()
     mon = findMonitorBlock()
 
+    if mon == null then
+        draw_text_term(1, 7, "Error:", colors.red, colors.black)
+        draw_text_term(1, 8, "Could not connect to a monitor. Place a 3x3 advanced monitor", colors.red, colors.black)
+        draw_text_term(1, 11, "Press Enter to continue...", colors.gray, colors.black)
+        wait = read()
+        setup_wizard()
+    else
+        monX, monY = mon.getSize()
+        draw_text_term(27, 6, "success", colors.lime, colors.black)
+        sleep(0.5)
+    end
 
     save_config()
     sleep(0.1)

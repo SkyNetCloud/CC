@@ -125,7 +125,7 @@ function test_stuff()
     sleep(0.1)
     draw_text_term(1, 9, "Setup Complete!", colors.lime, colors.black) 
     sleep(1)
-    
+
     call_homepage()
 end
 
@@ -154,10 +154,21 @@ function findMonitorBlock()
     end
 end
 
+
+function setup_wizard()
+ term.clear()
+
+ wait = read()
+ test_stuff()
+
+end
+
 function startup()
     if fs.exists("config.txt") then
         load_config()
         test_stuff()
+    else
+     setup_wizard()
     end
 end
 

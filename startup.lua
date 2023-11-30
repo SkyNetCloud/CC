@@ -117,6 +117,9 @@ end
 function test_stuff()
     term.clear()
 
+    draw_text_term(1, 3, "Searching for a peripherals...", colors.white, colors.black)
+    sleep(1)
+
     rsBridge = findRSBridgeBlock()
     mon = findMonitorBlock()
 

@@ -1,4 +1,4 @@
-local m = peripheral.wrap("right")
+local m = peripheral.wrap("back")
 local rsBridge = peripheral.find("rsBridge")
 
 

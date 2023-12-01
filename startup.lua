@@ -88,21 +88,6 @@ function homeScreen()
         local percent = math.floor((minVal / maxVal) * 100)
         draw_text(15, 5, percent .. "%", colors.white, colors.black)
 
-        -- if percent < 25 then
-        --     progress_bar(2, 6, monX - 2, minVal, maxVal, colors.red, colors.gray)
-        -- else
-        --     if percent < 50 then
-        --         progress_bar(2, 6, monX - 2, minVal, maxVal, colors.orange, colors.gray)
-        --     else
-        --         if percent < 75 then
-        --             progress_bar(2, 6, monX - 2, minVal, maxVal, colors.yellow, colors.gray)
-        --         else
-        --             if percent <= 100 then
-        --                 progress_bar(2, 6, monX - 2, minVal, maxVal, colors.lime, colors.gray)
-        --             end
-        --         end
-        --     end
-        -- end
     end
 end
 

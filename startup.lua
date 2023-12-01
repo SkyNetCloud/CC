@@ -139,7 +139,7 @@ function findRSBridgeBlock()
         if peripheral.getType(name) == "rsBridge" then
             return peripheral.wrap(name)
         else
-            return term.write("No rsBridge Found")
+           -- return term.write("No rsBridge Found")
         end
     end
 end
@@ -152,7 +152,7 @@ function findMonitorBlock()
             test = name
             return peripheral.wrap(name)
         else
-            return term.write("no Monitor found")
+            --return term.write("no Monitor found")
         end
     end
 end

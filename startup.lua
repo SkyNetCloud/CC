@@ -88,21 +88,21 @@ function homeScreen()
         local percent = math.floor((minVal / maxVal) * 100)
         draw_text(15, 5, percent .. "%", colors.white, colors.black)
 
-        if percent < 25 then
-            progress_bar(2, 6, monX - 2, minVal, maxVal, colors.red, colors.gray)
-        else
-            if percent < 50 then
-                progress_bar(2, 6, monX - 2, minVal, maxVal, colors.orange, colors.gray)
-            else
-                if percent < 75 then
-                    progress_bar(2, 6, monX - 2, minVal, maxVal, colors.yellow, colors.gray)
-                else
-                    if percent <= 100 then
-                        progress_bar(2, 6, monX - 2, minVal, maxVal, colors.lime, colors.gray)
-                    end
-                end
-            end
-        end
+        -- if percent < 25 then
+        --     progress_bar(2, 6, monX - 2, minVal, maxVal, colors.red, colors.gray)
+        -- else
+        --     if percent < 50 then
+        --         progress_bar(2, 6, monX - 2, minVal, maxVal, colors.orange, colors.gray)
+        --     else
+        --         if percent < 75 then
+        --             progress_bar(2, 6, monX - 2, minVal, maxVal, colors.yellow, colors.gray)
+        --         else
+        --             if percent <= 100 then
+        --                 progress_bar(2, 6, monX - 2, minVal, maxVal, colors.lime, colors.gray)
+        --             end
+        --         end
+        --     end
+        -- end
     end
 end
 
@@ -154,7 +154,7 @@ function findRSBridgeBlock()
         if peripheral.getType(name) == "rsBridge" then
             return peripheral.wrap(name)
         else
-            --return null
+            return term.write("No rsBridge Found")
         end
     end
 end
@@ -167,7 +167,7 @@ function findMonitorBlock()
             test = name
             return peripheral.wrap(name)
         else
-            --return null
+            return term.write("no Monitor found")
         end
     end
 end
@@ -175,10 +175,8 @@ end
 
 function setup_wizard()
  term.clear()
-
  wait = read()
  test_stuff()
-
 end
 
 function startup()

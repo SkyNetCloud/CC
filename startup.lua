@@ -43,7 +43,6 @@ function draw_line_term(x, y, length, color)
     term.write(string.rep(" ", length))
 end
 
-
 function progress_bar(x, y, length, minVal, maxVal, bar_color, bg_color)
     draw_line(x, y, length, bg_color)   --backgoround bar
     local barSize = math.floor((minVal / maxVal) * length)
@@ -82,11 +81,29 @@ function homeScreen()
         clear()
         menu_bar()
 
-        draw_text(2, 5, "Energy Stored: "..rsBridge.getEnergyStorage(), colors.yellow, colors.black)
+        draw_text(2, 5, "Energy Stored: " .. rsBridge.getEnergyStorage(), colors.yellow, colors.black)
         local maxVal = rsBridge.getMaxEnergyStorage()
         local minVal = rsBridge.getEnergyStorage()
         local percent = math.floor((minVal / maxVal) * 100)
         draw_text(15, 5, percent .. "%", colors.white, colors.black)
+
+        if percent < 50 then
+            progress_bar(2, 6, monX - 2, minVal, maxVal, colors.red, colors.gray)
+        else
+            if percent < 100 then
+                progress_bar(2, 6, monX - 2, minVal, maxVal, colors.orange, colors.gray)
+            else
+                if percent < 1600 then
+                    progress_bar(2, 6, monX - 2, minVal, maxVal, colors.yellow, colors.gray)
+                else
+                    if percent <= 3200 then
+                        progress_bar(2, 6, monX - 2, minVal, maxVal, colors.lime, colors.gray)
+                    end
+                end
+            end
+        end
+
+
     end
 end
 

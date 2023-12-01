@@ -75,13 +75,12 @@ function load_config()
     sr.close()
 end
 
-
 function menu_bar()
     draw_line(1, 1, monX, colors.blue)
     draw_text(2, 1, "Settings", colors.white, colors.blue)
     draw_line(1, 19, monX, colors.blue)
     draw_text(2, 19, "     RSBridge Info", colors.white, colors.blue)
-  end
+end
 
 function homeScreen()
     while true do
@@ -94,9 +93,6 @@ function homeScreen()
         local percent = math.floor((minVal / maxVal) * 100)
         draw_text(15, 5, percent .. "%", colors.white, colors.black)
     end
-
-
-
 end
 
 function call_homepage()
@@ -181,7 +177,7 @@ function startup()
         load_config()
         test_stuff()
     else
-        --
+        setup_wizard()
     end
 end
 

@@ -43,17 +43,13 @@ function draw_line_term(x, y, length, color)
     term.write(string.rep(" ", length))
 end
 
---create progress bar
---draws two overlapping lines
---background line of bg_color
---main line of bar_color as a percentage of minVal/maxVal
+
 function progress_bar(x, y, length, minVal, maxVal, bar_color, bg_color)
     draw_line(x, y, length, bg_color)   --backgoround bar
     local barSize = math.floor((minVal / maxVal) * length)
     draw_line(x, y, barSize, bar_color) --progress so far
 end
 
---same as above but on the computer terminal
 function progress_bar_term(x, y, length, minVal, maxVal, bar_color, bg_color)
     draw_line_term(x, y, length, bg_color)   --backgoround bar
     local barSize = math.floor((minVal / maxVal) * length)
@@ -67,7 +63,6 @@ function save_config()
     sw.close()
 end
 
---read settings from file
 function load_config()
     sr = fs.open("config.txt", "r")
     version = tonumber(sr.readLine())
@@ -77,9 +72,9 @@ end
 
 function menu_bar()
     draw_line(1, 1, monX, colors.blue)
-    draw_text(2, 1, "Settings", colors.white, colors.blue)
+    draw_text(2, 1, "     RSBridge Display", colors.white, colors.blue)
     draw_line(1, 19, monX, colors.blue)
-    draw_text(2, 19, "     RSBridge Info", colors.white, colors.blue)
+    draw_text(2, 19, "     RSBridge Display", colors.white, colors.blue)
 end
 
 function homeScreen()
@@ -87,7 +82,7 @@ function homeScreen()
         clear()
         menu_bar()
 
-        draw_text(2, 5, "Energy Stored: ", colors.yellow, colors.black)
+        draw_text(2, 5, "Energy Stored: "..rsBridge.getEnergyStorage(), colors.yellow, colors.black)
         local maxVal = rsBridge.getMaxEnergyStorage()
         local minVal = rsBridge.getEnergyStorage()
         local percent = math.floor((minVal / maxVal) * 100)

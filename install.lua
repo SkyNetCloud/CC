@@ -88,7 +88,7 @@ function install(program, github)
 
     --remove program and fetch new copy
 
-    shell.run("github get " .. pastebin .. " " .. program)
+    shell.run("github get " .. github .. " " .. program)
 
     sleep(0.5)
 

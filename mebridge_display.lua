@@ -96,7 +96,7 @@ while true do
     progress_bar(2, 9, monX-2, minVal, maxVal, colors.orange, colors.gray)
     else if minVal < 2000 then
     progress_bar(2, 9, monX-2, minVal, maxVal, colors.red, colors.gray)
-    else if minVal >= 2000 then
+    else if minVal >= 2500 then
       progress_bar(2, 9, monX-2, 2000, maxVal, colors.red, colors.gray)
     end
     end
@@ -113,15 +113,15 @@ while true do
     local minVal = math.floor(meBridge.getEnergyUsage())
  
     if minVal < 500 then
-    progress_bar(2, 9, monX-2, minVal, maxVal, colors.lime, colors.gray)
+    progress_bar(2, 12, monX-2, minVal, maxVal, colors.lime, colors.gray)
     else if minVal < 1000 then
-    progress_bar(2, 9, monX-2, minVal, maxVal, colors.yellow, colors.gray)
+    progress_bar(2, 12, monX-2, minVal, maxVal, colors.yellow, colors.gray)
     else if minVal < 1500 then  
-    progress_bar(2, 9, monX-2, minVal, maxVal, colors.orange, colors.gray)
+    progress_bar(2, 12, monX-2, minVal, maxVal, colors.orange, colors.gray)
     else if minVal < 2000 then
-    progress_bar(2, 9, monX-2, minVal, maxVal, colors.red, colors.gray)
+    progress_bar(2, 12, monX-2, minVal, maxVal, colors.red, colors.gray)
     else if minVal >= 2000 then
-      progress_bar(2, 9, monX-2, 2000, maxVal, colors.red, colors.gray)
+      progress_bar(2, 12, monX-2, 2000, maxVal, colors.red, colors.gray)
     end
     end
     end

@@ -75,31 +75,13 @@ function menu_bar()
     draw_line(1, 19, monX, colors.blue)
     draw_text(2, 25, "     MEBridge Display", colors.white, colors.blue)
 end
+
 function homepage()
 while true do
     clear()
     menu_bar()
    -- terminal_screen()
  
-    -----------FUEL---------------------
-    draw_text(2, 5, "Power Level:", colors.yellow, colors.black)
-    local maxVal = reactor.fuelTank().capacity()
-    local minVal = reactor.fuelTank().fuel() 
-    local percent = math.floor((minVal/maxVal)*100)
-    draw_text(15, 5, percent.."%", colors.white, colors.black)
- 
-    if percent < 25 then
-    progress_bar(2, 6, monX-2, minVal, maxVal, colors.red, colors.gray)
-    else if percent < 50 then
-    progress_bar(2, 6, monX-2, minVal, maxVal, colors.orange, colors.gray)
-    else if percent < 75 then 
-    progress_bar(2, 6, monX-2, minVal, maxVal, colors.yellow, colors.gray)
-    else if percent <= 100 then
-    progress_bar(2, 6, monX-2, minVal, maxVal, colors.lime, colors.gray)
-    end
-    end
-    end
-    end
  
     -----------Item Storage---------------
     draw_text(2, 8, "Used Storage:", colors.yellow, colors.black)
@@ -123,6 +105,30 @@ while true do
     end
  
     draw_text(15, 8, math.floor(minVal).."/"..maxVal, colors.white, colors.black)
+
+
+
+    draw_text(2, 11, "Power Usage:", colors.yellow, colors.black)
+    local maxVal = meBridge.getMaxEnergyStorage()
+    local minVal = math.floor(meBridge.getEnergyUsage())
+ 
+    if minVal < 500 then
+    progress_bar(2, 9, monX-2, minVal, maxVal, colors.lime, colors.gray)
+    else if minVal < 1000 then
+    progress_bar(2, 9, monX-2, minVal, maxVal, colors.yellow, colors.gray)
+    else if minVal < 1500 then  
+    progress_bar(2, 9, monX-2, minVal, maxVal, colors.orange, colors.gray)
+    else if minVal < 2000 then
+    progress_bar(2, 9, monX-2, minVal, maxVal, colors.red, colors.gray)
+    else if minVal >= 2000 then
+      progress_bar(2, 9, monX-2, 2000, maxVal, colors.red, colors.gray)
+    end
+    end
+    end
+    end
+    end
+ 
+    draw_text(15, 11, math.floor(minVal).."/"..maxVal, colors.white, colors.black)
  
 
  

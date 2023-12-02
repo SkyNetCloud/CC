@@ -54,7 +54,6 @@ function install_github()
       shell.run("pastebin get".. bootstrap)
     else
      draw_text_term(1,11, "Skipping installing bootstrap", colors.green, colors.black)
-     start()
     end
 end
 

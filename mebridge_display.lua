@@ -87,21 +87,35 @@ function homeScreen()
         local percent = math.floor((minVal / maxVal) * 100)
         draw_text(15, 5, percent .. "%", colors.white, colors.black)
 
-        if percent < 50 then
-            progress_bar(2, 6, monX - 2, minVal, maxVal, colors.red, colors.gray)
-        else
-            if percent < 100 then
-                progress_bar(2, 6, monX - 2, minVal, maxVal, colors.orange, colors.gray)
-            else
-                if percent < 1600 then
-                    progress_bar(2, 6, monX - 2, minVal, maxVal, colors.yellow, colors.gray)
-                else
-                    if percent <= 3200 then
-                        progress_bar(2, 6, monX - 2, minVal, maxVal, colors.lime, colors.gray)
-                    end
-                end
-            end
+
+
+        draw_text(2, 8, "Stroage Usage:", colors.yellow, colors.black)
+        local maxVal = meBridge.getTotalItemStorage()
+        local minVal = math.floor(meBridge.getUsedStorage())
+     
+        if minVal < 500 then
+        progress_bar(2, 9, monX-2, minVal, maxVal, colors.lime, colors.gray)
+        else if minVal < 1000 then
+        progress_bar(2, 9, monX-2, minVal, maxVal, colors.yellow, colors.gray)
+        else if minVal < 1500 then  
+        progress_bar(2, 9, monX-2, minVal, maxVal, colors.orange, colors.gray)
+        else if minVal < 2000 then
+        progress_bar(2, 9, monX-2, minVal, maxVal, colors.red, colors.gray)
+        else if minVal >= 2000 then
+          progress_bar(2, 9, monX-2, 2000, maxVal, colors.red, colors.gray)
         end
+        end
+        end
+        end
+        end
+     
+        draw_text(15, 8, math.floor(minVal).."/"..maxVal, colors.white, colors.black)
+
+
+
+
+
+
 
 
     end

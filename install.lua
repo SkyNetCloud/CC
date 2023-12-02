@@ -176,10 +176,10 @@ function selectProgram()
     input = read()
 
     if input == "1" then
-        install("rsbridgedisplay", rsBridge_control_github)
+        install("rsbridge_display", rsBridge_control_github)
     else
         if input == "2" then
-            install("mebridgedisplay", meBridge_control_github)
+            install("mebridge_display", meBridge_control_github)
         end
     end
 end

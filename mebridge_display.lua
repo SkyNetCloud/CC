@@ -81,9 +81,9 @@ function homeScreen()
         clear()
         menu_bar()
 
-        draw_text(2, 5, "Energy Stored: " .. rsBridge.getEnergyStorage(), colors.yellow, colors.black)
-        local maxVal = rsBridge.getMaxEnergyStorage()
-        local minVal = rsBridge.getEnergyStorage()
+        draw_text(2, 5, "Energy Stored: " .. meBridge.getEnergyStorage(), colors.yellow, colors.black)
+        local maxVal = meBridge.getMaxEnergyStorage()
+        local minVal = meBridge.getEnergyStorage()
         local percent = math.floor((minVal / maxVal) * 100)
         draw_text(15, 5, percent .. "%", colors.white, colors.black)
 
@@ -132,17 +132,17 @@ function test_stuff()
     draw_text_term(1, 3, "Searching for a peripherals...", colors.white, colors.black)
     sleep(1)
 
-    rsBridge = findMEBridgeBlock()
+    meBridge = findMEBridgeBlock()
     mon = findMonitorBlock()
 
 
 
     draw_text_term(2, 5, "Connecting to MEBridge...", colors.white, colors.black)
     sleep(0.5)
-    if rsBridge == null then
+    if meBridge == null then
         draw_text_term(1, 8, "Error:", colors.red, colors.black)
         draw_text_term(1, 9, "Could not connect to MEBridge", colors.red, colors.black)
-        draw_text_term(1, 10, "rsBridge must be connected with networking cable", colors.white, colors.black)
+        draw_text_term(1, 10, "MEBridge must be connected with networking cable", colors.white, colors.black)
         draw_text_term(1, 11, "and modems or the computer is directly beside", colors.white, colors.black)
         draw_text_term(1, 14, "Press Enter to continue...", colors.gray, colors.black)
         wait = read()

@@ -6,8 +6,8 @@ meBridge_display_github = "SkyNetCloud/CC/master/meBridge_display.lua"
 
 rsBridge_display_github = "SkyNetCloud/CC/master/rsBridge_display.lua"
 
-rsBridge_startup = ""
-meBridge_startup = ""
+rsBridge_startup = "SkyNetCloud/CC/master/rsBridge_startup.lua"
+meBridge_startup = "SkyNetCloud/CC/master/meBridge_startup.lua"
 
 local meBridge
 local rsBridge

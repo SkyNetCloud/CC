@@ -6,6 +6,9 @@ meBridge_display_github = "SkyNetCloud/CC/master/meBridge_display.lua"
 
 rsBridge_display_github = "SkyNetCloud/CC/master/rsBridge_display.lua"
 
+rsBridge_startup = ""
+meBridge_startup = ""
+
 local meBridge
 local rsBridge
 term.clear()
@@ -55,20 +58,57 @@ function install(program, github)
         install_github()
     end
 
-    if fs.exists(program.."_old") then
-      fs.delete(program.."_old")       
+    if fs.exists(program .. "_old") then
+        fs.delete(program .. "_old")
     end
 
     if fs.exists("config.txt") then
-     fs.delete("config.txt")
+        fs.delete("config.txt")
     end
     if fs.exists(program) then
-        fs.copy(program, program.."_old")
+        fs.copy(program, program .. "_old")
         fs.delete(program)
     end
 
-    shell.run("github get"..github.." "..program)
-    
+    shell.run("github get" .. github .. " " .. program)
+
+    sleep(0.5)
+
+    term.setCursorPos(1, 8)
+
+    if fs.exists("startup_old") then
+        fs.delete("startup_old")
+    end
+
+    if fs.exists("startup") then
+        fs.copy("startup", "startup_old")
+        fs.delete("startup")
+    end
+
+    if program == "rsBridge_display" then
+        shell.run("github get" .. rsBridge_startup .. " startup")
+    else
+        if program == "meBridge_display" then
+            shell.run("github get" .. meBridge_startup .. " startup")
+        end
+    end
+    if fs.exists(program) then
+        display_text_term(1,11,"Success!", colors.lime, colors.black)
+        display_text_term(1,12, "Press Enter to reboot...", colors.gray, colors.black)
+        wait = read()
+        shell.run("reboot")
+    else
+        display_text_term(1,11,"Error installing file.", colors.red, colors.black)
+        sleep(0.1)
+        display_text_term(1,11)
+        sleep(0.1)
+        fs.copy(program.."_old", program)
+        fs.delete(program.."_old")
+
+        display_text_term(1,14,"Press Enter to contiune...", colors.gray, colors.black)
+        wait = read()
+        start()
+    end
 end
 
 function install_github(program, pastebin)

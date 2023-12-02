@@ -37,12 +37,11 @@ end
 
 function menu_bars()
     draw_line_term(1, 1, 55, colors.blue)
-    draw_text_term(10, 1, "BiggerReactors Control Installer", colors.white, colors.blue)
+    draw_text_term(10, 1, "Storage Display Installer", colors.white, colors.blue)
 
     draw_line_term(1, 18, 55, colors.blue)
     draw_line_term(1, 19, 55, colors.blue)
-    draw_text_term(10, 18, "by jaranvil aka jared314", colors.white, colors.blue)
-    draw_text_term(10, 19, "modified by Wolf1596Games", colors.white, colors.blue)
+    draw_text_term(10, 18, "by SkyNetCloud", colors.white, colors.blue)
 end
 
 --------------------------------------------------------------

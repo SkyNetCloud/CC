@@ -132,7 +132,7 @@ end
 
 function call_homepage()
     clear()
-    parallel.waitForAny(homeScreen)
+    parallel.waitForAny(homepage)
 end
 
 function test_stuff()

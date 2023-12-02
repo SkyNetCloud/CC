@@ -48,10 +48,9 @@ end
 --------------------------------------------------------------
 
 function install_github()
-    bootstrap = "WdiT6sR5"
     if not fs.exists("github") then
         draw_text_term(1, 11, "Installing bootstrap...", colors.blue, colors.black)
-        shell.run("pastebin get " .. bootstrap .. "bootstrap")
+        shell.run("pastebin get WdiT6sR5 bootstrap")
         sleep(0.1)
         shell.run("bootstrap")
     else

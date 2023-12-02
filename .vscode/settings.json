@@ -16,7 +16,8 @@
         "term",
         "textutils",
         "window",
-        "sleep"
+        "sleep",
+        "write"
     ],
     "Lua.diagnostics.severity": {
         "unused-local": "Information",
@@ -28,6 +29,7 @@
     "Lua.diagnostics.disable": [
         "duplicate-set-field",
         "inject-field",
-        "unused-local"
+        "unused-local",
+        "lowercase-global"
     ]
 }

@@ -6,8 +6,8 @@ meBridge_control_github = "SkyNetCloud/CC/mebridgedisplay.lua"
 rsBridge_startup = "SkyNetCloud/CC/rsBridge_startup.lua"
 meBridge_startup = "SkyNetCloud/CC/meBridge_startup.lua"
 
-rsBridge_update_check = "Xmfy1Dfc"
-meBridge_update_check = "XmsSWZEi"
+rsBridge_update_check = "SkyNetCloud/CC/rsbridgedisplay_update.lua"
+meBridge_update_check = "SkyNetCloud/CC/mebridgedisplay_update.lua"
 
 ---------------------------------------------
 
@@ -110,10 +110,10 @@ function install(program, github)
     end
 
 
-    if program == "rsbridgedisplay" then
+    if program == "rsbridge_display" then
         shell.run("github get " .. rsBridge_startup .. " startup")
     else
-        if program == "mebridgedisplay" then
+        if program == "mebridge_display" then
             shell.run("github get " .. meBridge_startup .. " startup")
         end
     end

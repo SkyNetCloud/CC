@@ -1,7 +1,7 @@
 installer = "SkyNetCloud/CC/master/install.lua"
 
-rsBridge_control_github = "SkyNetCloud/CC/master/rsbridgedisplay.lua"
-meBridge_control_github = "SkyNetCloud/CC/master/mebridgedisplay.lua"
+rsBridge_control_github = "SkyNetCloud/CC/master/rsbridge_display.lua"
+meBridge_control_github = "SkyNetCloud/CC/master/mebridge_display.lua"
 
 rsBridge_startup = "SkyNetCloud/CC/master/rsBridge_startup.lua"
 meBridge_startup = "SkyNetCloud/CC/master/meBridge_startup.lua"

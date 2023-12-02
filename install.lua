@@ -11,8 +11,8 @@ meBridge_update_check = "SkyNetCloud/CC/master/mebridgedisplay_update.lua"
 
 ---------------------------------------------
 
-local reactor
-local turbine
+local rsBridge
+local meBridge
 term.clear()
 -------------------FORMATTING-------------------------------
 

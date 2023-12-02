@@ -91,7 +91,7 @@ function homeScreen()
 
         draw_text(2, 8, "Stroage Usage:", colors.yellow, colors.black)
         local maxVal = meBridge.getTotalItemStorage()
-        local minVal = math.floor(meBridge.getUsedStorage())
+        local minVal = math.floor(meBridge.getUsedItemStorage())
      
         if minVal < 500 then
         progress_bar(2, 9, monX-2, minVal, maxVal, colors.lime, colors.gray)

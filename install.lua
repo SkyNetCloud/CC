@@ -1,4 +1,4 @@
-installer = "SkyNetCloud/CC/install.lua"
+installer = "SkyNetCloud/CC/master/install.lua"
 
 rsBridge_control_github = "SkyNetCloud/CC/master/rsbridgedisplay.lua"
 meBridge_control_github = "SkyNetCloud/CC/master/mebridgedisplay.lua"

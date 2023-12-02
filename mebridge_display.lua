@@ -123,11 +123,11 @@ function test_stuff()
 
 
 
-    draw_text_term(2, 5, "Connecting to RSBridge...", colors.white, colors.black)
+    draw_text_term(2, 5, "Connecting to MEBridge...", colors.white, colors.black)
     sleep(0.5)
     if rsBridge == null then
         draw_text_term(1, 8, "Error:", colors.red, colors.black)
-        draw_text_term(1, 9, "Could not connect to RSBridge", colors.red, colors.black)
+        draw_text_term(1, 9, "Could not connect to MEBridge", colors.red, colors.black)
         draw_text_term(1, 10, "rsBridge must be connected with networking cable", colors.white, colors.black)
         draw_text_term(1, 11, "and modems or the computer is directly beside", colors.white, colors.black)
         draw_text_term(1, 14, "Press Enter to continue...", colors.gray, colors.black)

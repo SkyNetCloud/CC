@@ -71,9 +71,9 @@ end
 
 function menu_bar()
     draw_line(1, 1, monX, colors.blue)
-    draw_text(2, 1, "     RSBridge Display", colors.white, colors.blue)
+    draw_text(2, 1, "     MEBridge Display", colors.white, colors.blue)
     draw_line(1, 19, monX, colors.blue)
-    draw_text(2, 19, "     RSBridge Display", colors.white, colors.blue)
+    draw_text(2, 19, "     MEBridge Display", colors.white, colors.blue)
 end
 
 function homeScreen()
@@ -118,7 +118,7 @@ function test_stuff()
     draw_text_term(1, 3, "Searching for a peripherals...", colors.white, colors.black)
     sleep(1)
 
-    rsBridge = findRSBridgeBlock()
+    rsBridge = findMEBridgeBlock()
     mon = findMonitorBlock()
 
 

@@ -1,2 +1,2 @@
 sleep(0.1)
-shell.run("rsBridge_display")
+shell.run("rsbridge_display")

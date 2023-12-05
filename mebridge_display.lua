@@ -88,13 +88,13 @@ while true do
     local maxVal = meBridge.getTotalItemStorage()
     local minVal = math.floor(meBridge.getUsedItemStorage())
  
-    if minVal < 500 then
+    if minVal > 500 then
     progress_bar(2, 9, monX-2, minVal, maxVal, colors.lime, colors.gray)
-    else if minVal < 1000 then
+    else if minVal > 1000 then
     progress_bar(2, 9, monX-2, minVal, maxVal, colors.yellow, colors.gray)
-    else if minVal < 1500 then  
+    else if minVal > 1500 then  
     progress_bar(2, 9, monX-2, minVal, maxVal, colors.orange, colors.gray)
-    else if minVal < 2000 then
+    else if minVal > 6000 then
     progress_bar(2, 9, monX-2, minVal, maxVal, colors.red, colors.gray)
     else if minVal >= 2500 then
       progress_bar(2, 9, monX-2, 2000, maxVal, colors.red, colors.gray)

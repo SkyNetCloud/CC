@@ -1,2 +1,2 @@
 sleep(0.1)
-shell.run("meBridge_display")
+shell.run("mebridge_display")

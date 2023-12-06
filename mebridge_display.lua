@@ -55,6 +55,30 @@ function progress_bar_term(x, y, length, minVal, maxVal, bar_color, bg_color)
     draw_line_term(x, y, barSize, bar_color) --progress so far
 end
 
+--dropdown menu for settings
+function settings_menu()
+    draw_line(12, 2, 18, colors.gray)
+    draw_line(12, 3, 18, colors.gray)
+    draw_text(13, 2, "Check for Updates", colors.white, colors.gray)
+    draw_text(13, 3, "Reset peripherals", colors.white, colors.gray)
+end
+
+--basic popup screen with title bar and exit button
+function popup_screen(y, title, height)
+    clear()
+    menu_bar()
+
+    draw_line(4, y, 22, colors.blue)
+    draw_line(25, y, 1, colors.red)
+
+    for counter = y + 1, height + y do
+        draw_line(4, counter, 22, colors.white)
+    end
+
+    draw_text(25, y, "X", colors.white, colors.red)
+    draw_text(5, y, title, colors.white, colors.blue)
+end
+
 function save_config()
     sw = fs.open("config.txt", "w")
     sw.writeLine(version)
@@ -71,69 +95,168 @@ end
 
 function menu_bar()
     draw_line(1, 1, monX, colors.blue)
-    draw_text(2, 1, "     MEBridge Display", colors.white, colors.blue)
-    draw_line(1, 19, monX, colors.blue)
+    draw_text(2, 1, "Settings", colors.white, colors.blue)
+    draw_line(1, 25, monX, colors.blue)
     draw_text(2, 25, "     MEBridge Display", colors.white, colors.blue)
 end
 
 function homepage()
-while true do
+    while true do
+        clear()
+        menu_bar()
+        terminal_screen()
+
+
+        -----------Item Storage---------------
+        draw_text(2, 8, "Used Storage:", colors.yellow, colors.black)
+        local maxVal = meBridge.getTotalItemStorage()
+        local minVal = math.floor(meBridge.getUsedItemStorage())
+
+        if minVal > 500 then
+            progress_bar(2, 9, monX - 2, minVal, maxVal, colors.lime, colors.gray)
+        else
+            if minVal > 1000 then
+                progress_bar(2, 9, monX - 2, minVal, maxVal, colors.yellow, colors.gray)
+            else
+                if minVal > 1500 then
+                    progress_bar(2, 9, monX - 2, minVal, maxVal, colors.orange, colors.gray)
+                else
+                    if minVal > 6000 then
+                        progress_bar(2, 9, monX - 2, minVal, maxVal, colors.red, colors.gray)
+                    else
+                        if minVal >= 2500 then
+                            progress_bar(2, 9, monX - 2, 2000, maxVal, colors.red, colors.gray)
+                        end
+                    end
+                end
+            end
+        end
+
+        draw_text(15, 8, math.floor(minVal) .. "/" .. maxVal, colors.white, colors.black)
+
+
+
+        draw_text(2, 11, "Power Usage:", colors.yellow, colors.black)
+        local maxVal = meBridge.getMaxEnergyStorage()
+        local minVal = math.floor(meBridge.getEnergyUsage())
+
+        if minVal < 500 then
+            progress_bar(2, 12, monX - 2, minVal, maxVal, colors.lime, colors.gray)
+        else
+            if minVal < 1000 then
+                progress_bar(2, 12, monX - 2, minVal, maxVal, colors.yellow, colors.gray)
+            else
+                if minVal < 1500 then
+                    progress_bar(2, 12, monX - 2, minVal, maxVal, colors.orange, colors.gray)
+                else
+                    if minVal < 2000 then
+                        progress_bar(2, 12, monX - 2, minVal, maxVal, colors.red, colors.gray)
+                    else
+                        if minVal >= 2500 then
+                            progress_bar(2, 12, monX - 2, 2000, maxVal, colors.red, colors.gray)
+                        end
+                    end
+                end
+            end
+        end
+
+        draw_text(15, 11, math.floor(minVal) .. "/" .. maxVal, colors.white, colors.black)
+
+
+
+        sleep(0.5)
+    end
+end
+
+function rf_mode()
+    wait = read()
+end
+
+function steam_mode()
+    wait = read()
+end
+
+function install_update(program, pastebin)
     clear()
-    menu_bar()
-   -- terminal_screen()
- 
- 
-    -----------Item Storage---------------
-    draw_text(2, 8, "Used Storage:", colors.yellow, colors.black)
-    local maxVal = meBridge.getTotalItemStorage()
-    local minVal = math.floor(meBridge.getUsedItemStorage())
- 
-    if minVal > 500 then
-    progress_bar(2, 9, monX-2, minVal, maxVal, colors.lime, colors.gray)
-    else if minVal > 1000 then
-    progress_bar(2, 9, monX-2, minVal, maxVal, colors.yellow, colors.gray)
-    else if minVal > 1500 then  
-    progress_bar(2, 9, monX-2, minVal, maxVal, colors.orange, colors.gray)
-    else if minVal > 6000 then
-    progress_bar(2, 9, monX-2, minVal, maxVal, colors.red, colors.gray)
-    else if minVal >= 2500 then
-      progress_bar(2, 9, monX-2, 2000, maxVal, colors.red, colors.gray)
-    end
-    end
-    end
-    end
-    end
- 
-    draw_text(15, 8, math.floor(minVal).."/"..maxVal, colors.white, colors.black)
+    draw_line(4, 5, 22, colors.blue)
 
+    for counter = 6, 10 do
+        draw_line(4, counter, 22, colors.white)
+    end
 
+    draw_text(5, 5, "Updating...", colors.white, colors.blue)
+    draw_text(5, 7, "Open computer", colors.black, colors.white)
+    draw_text(5, 8, "terminal.", colors.black, colors.white)
 
-    draw_text(2, 11, "Power Usage:", colors.yellow, colors.black)
-    local maxVal = meBridge.getMaxEnergyStorage()
-    local minVal = math.floor(meBridge.getEnergyUsage())
- 
-    if minVal < 500 then
-    progress_bar(2, 12, monX-2, minVal, maxVal, colors.lime, colors.gray)
-    else if minVal < 1000 then
-    progress_bar(2, 12, monX-2, minVal, maxVal, colors.yellow, colors.gray)
-    else if minVal < 1500 then  
-    progress_bar(2, 12, monX-2, minVal, maxVal, colors.orange, colors.gray)
-    else if minVal < 2000 then
-    progress_bar(2, 12, monX-2, minVal, maxVal, colors.red, colors.gray)
-    else if minVal >= 2000 then
-      progress_bar(2, 12, monX-2, 2000, maxVal, colors.red, colors.gray)
-    end
-    end
-    end
-    end
-    end
- 
-    draw_text(15, 11, math.floor(minVal).."/"..maxVal, colors.white, colors.black)
- 
+    if fs.exists("install") then fs.delete("install") end
+    shell.run("pastebin get 2JU1k5vg install")
+    shell.run("install")
+end
 
- 
+function update()
+    popup_screen(5, "Updates", 4)
+    draw_text(5, 7, "Connecting to", colors.black, colors.white)
+    draw_text(5, 8, "github...", colors.black, colors.white)
+
     sleep(0.5)
-  end
+
+    shell.run("github get  SkyNetCloud/CC/master/current_version.txt")
+    sr = fs.open("current_version.txt", "r")
+    current_version = tonumber(sr.readLine())
+    sr.close()
+    fs.delete("current_version.txt")
+    terminal_screen()
+
+    if current_version > version then
+        popup_screen(5, "Updates", 7)
+        draw_text(5, 7, "Update Available!", colors.black, colors.white)
+        draw_text(11, 9, " Install ", colors.white, colors.black)
+        draw_text(11, 11, " Ignore ", colors.white, colors.black)
+
+        local event, side, xPos, yPos = os.pullEvent("monitor_touch")
+
+        --Instatll button
+        if yPos == 9 and xPos >= 11 and xPos <= 17 then
+            install_update()
+        end
+
+        --Exit button
+        if yPos == 5 and xPos == 25 then
+            call_homepage()
+        end
+        call_homepage()
+    else
+        popup_screen(5, "Updates", 5)
+        draw_text(5, 7, "You are up to date!", colors.black, colors.white)
+        draw_text(11, 9, " Okay ", colors.white, colors.black)
+
+        local event, side, xPos, yPos = os.pullEvent("monitor_touch")
+
+        --Okay button
+        if yPos == 9 and xPos >= 11 and xPos <= 17 then
+            call_homepage()
+        end
+
+        --Exit button
+        if yPos == 5 and xPos == 25 then
+            call_homepage()
+        end
+        call_homepage()
+    end
+end
+
+function reset_peripherals()
+    clear()
+    draw_line(4, 5, 22, colors.blue)
+
+    for counter = 6, 10 do
+        draw_line(4, counter, 22, colors.white)
+    end
+
+    draw_text(5, 5, "Reset Peripherals", colors.white, colors.blue)
+    draw_text(5, 7, "Open computer", colors.black, colors.white)
+    draw_text(5, 8, "terminal.", colors.black, colors.white)
+    setup_wizard()
 end
 
 function call_homepage()
@@ -205,6 +328,18 @@ function findMonitorBlock()
             --return term.write("no Monitor found")
         end
     end
+end
+
+function terminal_screen()
+    term.clear()
+
+    draw_line_term(1, 1, 55, colors.blue)
+    draw_text_term(13, 1, "Storage Info Display", colors.white, colors.blue)
+    draw_line_term(1, 19, 55, colors.blue)
+    draw_line_term(1, 18, 55, colors.blue)
+    draw_text_term(13, 18, "By SkyNetCloud", colors.green, colors.blue)
+
+    draw_text_term(1, 3, "Current program:", colors.white, colors.blue)
 end
 
 function setup_wizard()

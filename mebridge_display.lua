@@ -259,9 +259,44 @@ function reset_peripherals()
     setup_wizard()
 end
 
+function mon_touch()
+    --when the monitor is touch on the homepage
+    if y == 1 then
+            if x < 3 then
+                if x < monX then
+                    settings_menu()
+                    local event, side, xPos, yPos = os.pullEvent("monitor_touch")
+                    if xPos > 13 then
+                        if yPos == 2 then
+                            update()
+                        else
+                            if yPos == 3 then
+                                reset_peripherals()
+                            else
+                                call_homepage()
+                            end
+                        end
+                    else
+                        call_homepage()
+                    end
+                end
+            end
+    end
+end
+
 function call_homepage()
     clear()
     parallel.waitForAny(homepage)
+
+    if stop_function == "terminal_screen" then
+        stop_function = "nothing"
+        setup_wizard()
+    else
+        if stop_function == "monitor_touch" then
+            stop_function = "nothing"
+            mon_touch()
+        end
+    end
 end
 
 function test_stuff()
